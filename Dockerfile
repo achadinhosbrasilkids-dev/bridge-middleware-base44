@@ -4,16 +4,16 @@ FROM node:20-alpine
 # Diretório da aplicação
 WORKDIR /app
 
-# Copia package.json e package-lock se houver
+# Copia package.json e package-lock.json (se existir)
 COPY package*.json ./
 
-# Instala dependências em modo production
-RUN npm ci --production
+# Instala dependências em modo produção
+RUN npm install --production
 
 # Copia o resto do código
 COPY . .
 
-# Porta que o app vai expor
+# Porta usada pelo app
 ENV PORT=3000
 EXPOSE 3000
 
